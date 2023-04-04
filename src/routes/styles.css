@@ -1,0 +1,194 @@
+/* Body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header */
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  /* Navigation */
+  nav {
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Main content */
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .left {
+    width: 49%;
+  }
+  
+  .right {
+    width: 49%;
+  }
+  
+  section {
+    background-color: #fff;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 48%;
+  }
+  
+  section:last-child {
+    margin-right: 0;
+  }
+  
+  /* Section headings */
+  h2 {
+    color: #333;
+    margin-top: 0;
+  }
+  
+  /* List items */
+  li {
+    margin-bottom: 10px;
+  }
+  
+  li h3 {
+    color: #333;
+    margin: 0;
+  }
+  
+  li p {
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  /* Form */
+  form {
+    margin-top: 20px;
+  }
+  
+  label, input {
+    display: block;
+  }
+  
+  input[type="text"], input[type="email"], input[type="password"] {
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  button[type="submit"] {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #666;
+  }
+
+/* Calendar */
+  #calendar {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 100%;
+  }
+  
+  #calendar h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  #calendar table {
+    width: 100%;
+  }
+  
+  #calendar th,
+  #calendar td {
+    padding: 5px;
+    text-align: center;
+  }
+  
+  #calendar th {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  #calendar td {
+    border: 1px solid #ccc;
+  }
+  
+  #calendar td.empty {
+    border: none;
+  }
+  
+  #calendar td.today {
+    background-color: #f2f2f2;
+  }
+  
+  #calendar td.current-month {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  #calendar td:not(.empty):hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }
+  
+  #calendar td.selected {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .button-primary {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button-primary:hover {
+    background-color: #0069d9;
+  }
