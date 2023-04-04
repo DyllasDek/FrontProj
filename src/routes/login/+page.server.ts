@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import type { Action, Actions, PageServerLoad } from './$types'
 
 import { db } from '$lib/server/database'
+import type { User } from '@prisma/client'
 
 export const load: PageServerLoad = async ({ locals }) => {
   // redirect user if logged in
@@ -25,7 +26,7 @@ const login: Action = async ({ cookies, request }) => {
     return fail(400, { invalid: true })
   }
 
-  const user = await db.user.findUnique({ where: { username } })
+  const user : User|null  = await db.user.findUnique({ where: { username } })
 
   if (!user) {
     return fail(400, { credentials: true })

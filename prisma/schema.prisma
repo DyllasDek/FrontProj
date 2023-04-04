@@ -26,20 +26,21 @@ model User {
 }
 
 model Assignments {
-  id    Int    @id
+  id    String @id @default(uuid())
   whom  User   @relation(fields: [whoId], references: [id])
   whoId String
 
-  details   String
-  course    Classes  @relation(fields: [courseid], references: [id])
-  courseid  Int
-  due       DateTime
-  Progress  String
-  completed Boolean
+  assignment String
+  details    String
+  course     Classes  @relation(fields: [courseid], references: [id])
+  courseid   String
+  due        DateTime
+  progress   String
+  completed  Boolean
 }
 
 model Classes {
-  id    Int    @id
+  id    String @id @default(uuid())
   whom  User   @relation(fields: [whoId], references: [id])
   whoId String
 
