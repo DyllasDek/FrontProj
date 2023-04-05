@@ -1,5 +1,5 @@
 import { db } from '$lib/server/database'
-import type { Assignments } from '@prisma/client';
+import type { Classes } from '@prisma/client';
 import { fail } from '@sveltejs/kit'
 
 
@@ -12,13 +12,12 @@ export async function load({ cookies }) {
     if (
       typeof id !== 'string' ||
       !id
-    ) {
-      return {assignments:null}
+    ) { return {classes:null}
     }
     console.log(id)
-    let resp = await db.user.findUniqueOrThrow({ where: {userAuthToken: id} , include: {Assignments: true}})
+    let resp = await db.user.findUniqueOrThrow({ where: {userAuthToken: id} , include: {Classes: true}})
     console.log(resp)
     return {
-      assignments: await resp.Assignments!
+      classes: await resp.Classes!
     };
   }

@@ -1,5 +1,5 @@
 import { db } from '$lib/server/database'
-import type { Assignments } from '@prisma/client';
+import type { Classes } from '@prisma/client';
 import { fail } from '@sveltejs/kit'
 
 
@@ -11,11 +11,9 @@ export async function load({ params }) {
     if (
       typeof id !== 'string' ||
       !id
-    ) {
-      return {_info:null}
-    }
+    ) {return {cl:null}}
     
     return {
-      _info: await db.assignments.findUniqueOrThrow({ where: {id: id} })
+      cl: await db.classes.findUniqueOrThrow({ where: {id: id} })
     };
   }
