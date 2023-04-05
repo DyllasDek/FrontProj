@@ -6,10 +6,10 @@ import { fail } from '@sveltejs/kit'
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
-    const id = Number(params.id)
+    const id = params.id
 
     if (
-      typeof id !== 'number' ||
+      typeof id !== 'string' ||
       !id
     ) {
       return fail(400, { invalid: true })
