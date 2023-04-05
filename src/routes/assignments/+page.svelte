@@ -1,19 +1,22 @@
 <script>
     /** @type {import('./$types').PageData} */
     export let data;
+    $: ({ assignments } = data)
   </script>
   
-  <h2>Assignment</h2>
-  {#if data}
-    {#each data._info as assignment}
-      <h3>{assignment._info?.assignment}</h3>
-      <p>{assignment._info?.details}</p>
-      <p>{assignment._info?.due}</p>
-      <p>{assignment._info?.progress}</p>
-      <p>{assignment._info?.completed}</p>
+  <h2>Assignments</h2>
+  {#if assignments}
+    {#each assignments as assign}
+      <assign>
+        <h3>{assign.assignment}</h3>
+        <p>{assign.details}</p>
+        <p>{assign.due}</p>
+        <p>{assign.progress}</p>
+        <p>{assign.completed}</p>
+      </assign>
     {/each}
   {:else}
-    <p>Assignment not found</p>
+    <p>Assignments not found</p>
   {/if}
   
   <pre>

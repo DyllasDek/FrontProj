@@ -15,8 +15,10 @@ export async function load({ cookies }) {
     ) {
       return fail(400, { invalid: true })
     }
+    console.log(id)
     let resp = await db.user.findUniqueOrThrow({ where: {userAuthToken: id} , include: {Assignments: true}})
+    console.log(resp)
     return {
-      _info: resp.Assignments
+      assignments: await resp.Assignments!
     };
   }
