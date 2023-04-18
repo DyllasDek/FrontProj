@@ -17,7 +17,12 @@ const config = {
                 include: ['/*'],
                 exclude: ['<all>']
             }
-        })
+        }),
+		vite: {
+			server: {
+			  platform: 'node'
+			}
+		}
 	}
 };
 
