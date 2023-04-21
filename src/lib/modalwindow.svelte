@@ -10,6 +10,7 @@
         isOpenModal = false;
         dispatch('closeModal', { isOpenModal });
     }
+    
 </script>
 
 

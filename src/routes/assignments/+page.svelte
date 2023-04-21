@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
 	import { base } from '$app/paths';
+	import Layout from '../+layout.svelte';
+	import type { PageData } from './$types';
 	import CreatePopupButton from './ModifyingAssignments/createPopupButton.svelte';
 	import AssignmentCreationForm from './assignmentCreationForm.svelte';
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	let form: AssignmentCreationForm;
+	export let data: PageData;
 	$: ({ assignments } = data);
 </script>
 
@@ -24,10 +26,8 @@
 	<p>Assignments not found</p>
 {/if}
 
-<CreatePopupButton let:closeAction={closeAction} >
+<CreatePopupButton let:closeAction={closeAction}  on:closePopup={form.ClearFields}>
 	<AssignmentCreationForm 
-	on:submitAssignment={() => {closeAction(); } 
-	
-} />
+	on:submitAssignment={() => {closeAction();}} bind:this={form}/>
 </CreatePopupButton> 
 <pre />

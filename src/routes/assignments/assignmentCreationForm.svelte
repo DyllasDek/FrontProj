@@ -7,6 +7,7 @@
 	export let due = '';
 	export let progress = 75;
 	export let completed = true;
+	let form: HTMLFormElement;
 	const dispatch = createEventDispatcher();
 
 	async function handleSubmit(event) {
@@ -20,15 +21,17 @@
 		};
 		dispatch('submitAssignment');
 		console.log(newAssignment);
-		ClearFields(event);
+		console.log(form);
+		ClearFields();
 	}
 	
-	export function ClearFields(event) {
-		event.target.reset();
+	export function ClearFields(){
+		form.reset();
 	}
+	
 </script>
 
-<form id="form" on:submit={handleSubmit}>
+<form id="form" on:submit={handleSubmit} bind:this={form}>
 	<h2>Create Assignment</h2>
 	<Textform
 		bind:bindVar={title}
