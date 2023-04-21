@@ -15,7 +15,7 @@
   <p>{cl.period}</p>
   <p>{cl.from} - {cl.to}</p>
 {:else}
-  <p>Assignment not found</p>
+  <p>Course not found</p>
 {/if}
 
 <pre>
