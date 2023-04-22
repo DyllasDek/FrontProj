@@ -3,7 +3,7 @@
 	import Layout from '../+layout.svelte';
 	import type { PageData } from './$types';
 	import CreatePopupButton from './ModifyingAssignments/createPopupButton.svelte';
-	import AssignmentCreationForm from './assignmentCreationForm.svelte';
+	import AssignmentCreationForm from './ModifyingAssignments/+page.svelte';
 
 	let form: AssignmentCreationForm;
 	export let data: PageData;
@@ -27,7 +27,12 @@
 {/if}
 
 <CreatePopupButton let:closeAction={closeAction}  on:closePopup={form.ClearFields}>
-	<AssignmentCreationForm 
+	<AssignmentCreationForm  functionTitle="Create assignment"
+	on:submitAssignment={() => {closeAction();}} bind:this={form}/>
+</CreatePopupButton> 
+
+<CreatePopupButton let:closeAction={closeAction}  on:closePopup={form.ClearFields}>
+	<AssignmentCreationForm  functionTitle="Update assignment"
 	on:submitAssignment={() => {closeAction();}} bind:this={form}/>
 </CreatePopupButton> 
 <pre />

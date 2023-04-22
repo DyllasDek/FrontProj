@@ -32,15 +32,15 @@
 		display: inline-block;
 		font-size: 20px;
 		margin: 4px 2px;
-        border-radius:20%;
+		border-radius: 20%;
 	}
-    button:hover {
-        background-color: #31427d;
-        transition: all 0.06s ease-in;
-        
-    }
-    button:active{
-        background-color: #31427d;
-        transition: all 0.06s ease-in;
-        transform: scale(0.9);}
+	button:hover {
+		background-color: #31427d;
+		transition: all 0.06s ease-in;
+	}
+	button:active {
+		background-color: #31427d;
+		transition: all 0.06s ease-in;
+		transform: scale(0.9);
+	}
 </style>
