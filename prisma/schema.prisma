@@ -35,7 +35,7 @@ model Assignments {
   course     Classes  @relation(fields: [courseid], references: [id])
   courseid   String
   due        DateTime
-  progress   String
+  progress   Int
   completed  Boolean
 }
 

@@ -1,38 +1,49 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import Layout from '../+layout.svelte';
 	import type { PageData } from './$types';
-	import CreatePopupButton from './ModifyingAssignments/createPopupButton.svelte';
-	import AssignmentCreationForm from './ModifyingAssignments/+page.svelte';
-
-	let form: AssignmentCreationForm;
+	import CreatePopupButton from '$lib/createPopupButton.svelte';
+	import AssignmentCreationForm from '$lib/assignEdit.svelte';
+	let info: AssignmentCreationForm;
 	export let data: PageData;
-	$: ({ assignments } = data);
+	
 </script>
 
 <h2>Assignments</h2>
-{#if assignments}
-	{#each assignments as assign}
+{#if data.assignments}
+	{#each data.assignments as assign}
 		<assign>
 			<h3>{assign.assignment}</h3>
 			<p>{assign.details}</p>
 			<p>{assign.due}</p>
 			<p>{assign.progress}</p>
 			<p>{assign.completed}</p>
+			<CreatePopupButton  on:closePopup={info.ClearFields}>
+				<AssignmentCreationForm  
+					functionTitle="Update assignment" 
+					UserId={data.id} 
+					classes={data.classes} 
+					assignment ={assign} 
+					action="/assignments?/update"
+					bind:this={info}/>
+			</CreatePopupButton> 
 			<a href="{base}/assignments/{assign.id}">check </a>
 		</assign>
 	{/each}
 {:else}
 	<p>Assignments not found</p>
 {/if}
+{#if data.id}
+<CreatePopupButton let:closeAction={closeAction}  on:closePopup={info.clearFields}>
+  <AssignmentCreationForm on:SubmitEvent = {closeAction}
+	functionTitle="Create assignment" 
+	UserId={data.id} 
+	classes={data.classes} 
+	action = "/assignments?/create"
+	bind:this={info}/>
+</CreatePopupButton>
+{/if}
 
-<CreatePopupButton let:closeAction={closeAction}  on:closePopup={form.ClearFields}>
-	<AssignmentCreationForm  functionTitle="Create assignment"
-	on:submitAssignment={() => {closeAction();}} bind:this={form}/>
-</CreatePopupButton> 
 
-<CreatePopupButton let:closeAction={closeAction}  on:closePopup={form.ClearFields}>
-	<AssignmentCreationForm  functionTitle="Update assignment"
-	on:submitAssignment={() => {closeAction();}} bind:this={form}/>
-</CreatePopupButton> 
+
+
 <pre />

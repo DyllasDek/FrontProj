@@ -14,6 +14,7 @@
 </script>
 
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div id="background" style="display: {isOpenModal ? 'block' : 'none'};" on:click={closeModal}></div>
 <div id="modal"  style="display: {isOpenModal ? 'block' : 'none'};">
     <slot></slot>

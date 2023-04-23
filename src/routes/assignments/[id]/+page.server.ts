@@ -1,6 +1,4 @@
 import { db } from '$lib/server/database'
-import type { Assignments } from '@prisma/client';
-import { fail } from '@sveltejs/kit'
 
 
 

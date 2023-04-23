@@ -4,7 +4,7 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
-	let isOpenModal = false;
+	export let isOpenModal = false;
 
 	function openModal() {
 		isOpenModal = true;

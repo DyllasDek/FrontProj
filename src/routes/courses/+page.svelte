@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import CreatePopupButton from '$lib/createPopupButton.svelte';
+	import type { PageData } from './$types';
 	import CreateCourse from './createCourse.svelte';
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	export let data : PageData;
 	$: ({ classes } = data);
 	export let form: CreateCourse;
 </script>

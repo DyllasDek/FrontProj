@@ -1,42 +1,54 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-
 	import Textform from '$lib/textform.svelte';
-	import { createAssignment } from './+page';
+	import type {Classes, Assignments} from '@prisma/client';
 
 	export let functionTitle: string;
-	export let assignment = {
-		id: 0,
-		title: '',
-		details: '',
-		due: '',
-		progress: 75,
-		completed: true
-	};
+
+	export let assignment : Assignments | null = null;
+	export let UserId : string;
+
+	export let classes: Classes[];
+	export let action : string;
+	let date : string;
+	if (!assignment) {
+		assignment = {
+			whoId: UserId,
+			id: '',
+			assignment: '',
+			details: '',
+			courseid: '',
+			due: new Date(0),
+			progress: '25',
+			completed: false
+		};
+	} else {
+		const d : Date = new Date(assignment.due);
+		date = (new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString()).slice(0, -1)
+	}
 
 	let form: HTMLFormElement;
 
 	const dispatch = createEventDispatcher();
-
-	async function handleSubmit(event) {
-		event.preventDefault();
-		dispatch('submitAssignment');
-		console.log(assignment);
-
-		ClearFields();
-	}
-
-	export function ClearFields() {
+	console.log(assignment.due.toDateString());
+	export function clearFields() {
 		form.reset();
+		dispatch('closePopup');
 	}
+
+	
 </script>
 
-<form id="form" on:submit={handleSubmit} bind:this={form}>
+{#if assignment}
+<form method="POST" id="form" bind:this={form} action={action}>
+	<input type="hidden" name="assign_uid" value={assignment.id} />
 	<center><h2>{functionTitle}</h2></center>
+
 	<Textform
-		bind:bindVar={assignment.title}
+		bind:bindVar={assignment.assignment}
 		inputId="title"
 		titleText="Assignment title:"
+		name = "assign"
 		placeholder="Write your assignment title: "
 	/>
 
@@ -44,16 +56,19 @@
 		bind:bindVar={assignment.details}
 		inputId="details"
 		titleText="Information about the assignment:"
+		name = "details"
 		placeholder="Additional details: "
 	/>
 
 	<div class="column_direction">
 		<div><label for="course"> Assignment for course:</label></div>
 		<div>
-			<select name="course" id="course" class="vertically_margin" required>
-				<option value="1">Course 1</option>
-				<option value="2">Course 2</option>
-				<option value="3">Course 3</option>
+			<select name="courseid" id="course" class="vertically_margin" required>
+				{#if classes}
+					{#each classes as cl}
+						<option value={cl.id}>{cl.courseid}</option>
+					{/each}
+				{/if}
 			</select>
 		</div>
 	</div>
@@ -70,9 +85,9 @@
 			/>
 		</div>
 		<div>
-			<label for="progress" class="horizontally_margin"
-				>Current progress: {assignment.progress}%</label
-			>
+			<label for="progress" class="horizontally_margin">
+				Current progress: {assignment.progress}%
+			</label>
 		</div>
 	</div>
 	<div class="row_direction">
@@ -89,10 +104,10 @@
 		<label for="due">Due date:</label>
 		<input
 			class="horizontally_margin"
-			type="datetime-local"
+			type="datetime-local"	
 			id="due"
 			name="due"
-			bind:value={assignment.due}
+			bind:value={date}
 			required
 		/>
 	</div>
@@ -101,6 +116,7 @@
 	<!-- Add any additional form fields for assignments here -->
 	<button type="submit">{functionTitle}</button>
 </form>
+{/if}
 
 <style>
 	.row_direction {

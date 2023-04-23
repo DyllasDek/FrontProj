@@ -2,13 +2,14 @@
 <script lang="ts">
   export let inputId: string;
   export let titleText: string;
+  export let name : string;
   export let placeholder: string;
   export let bindVar: string;
 </script>
 
 <div>
     <label for={inputId}>{titleText}</label>
-    <input id={inputId} name={inputId} type="text" placeholder={placeholder} bind:value={bindVar} required/>
+    <input id={inputId} name={name} type="text" placeholder={placeholder} bind:value={bindVar} required/>
 </div>
 <style >
 
