@@ -11,9 +11,7 @@
         <ul>
             <li><a href="{base}/">Dashboard</a></li>
             <li><a href="{base}/assignments">Assignments</a></li>
-            <li><a href="{base}/courses">Courses</a></li>
-            <li><a href="{base}/grades">Grades</a></li>
-            <li><a href="{base}/settings">Settings</a></li>
+            <li><a href="{base}/classes">Classes</a></li>
             {#if !$page.data.user}
             <li><a href="{base}/login">Login</a></li>
             <li><a href="{base}/register">Register</a></li>
@@ -22,8 +20,6 @@
               <form action="/logout" method="POST">
                 <button type="submit">Log out</button>
               </form>
-              
-              
             </li>
             {/if}
         </ul>

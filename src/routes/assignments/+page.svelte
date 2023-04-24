@@ -2,10 +2,10 @@
 	import { base } from '$app/paths';
 	import type { PageData } from './$types';
 	import CreatePopupButton from '$lib/createPopupButton.svelte';
-	import AssignmentCreationForm from '$lib/assignEdit.svelte';
-	let info: AssignmentCreationForm;
+	import AssignForm from '$lib/assignForm.svelte';
 	export let data: PageData;
-	
+
+	let form: AssignForm;
 </script>
 
 <h2>Assignments</h2>
@@ -17,15 +17,17 @@
 			<p>{assign.due}</p>
 			<p>{assign.progress}</p>
 			<p>{assign.completed}</p>
-			<CreatePopupButton  on:closePopup={info.ClearFields}>
-				<AssignmentCreationForm  
-					functionTitle="Update assignment" 
-					UserId={data.id} 
-					classes={data.classes} 
-					assignment ={assign} 
+			<CreatePopupButton let:closeAction on:closePopup={form.clearFields}>
+				<AssignForm
+					functionTitle="Update assignment"
+					on:SubmitEvent={() => closeAction()}
+					UserId={data.id}
+					classes={data.classes}
+					assignment={assign}
 					action="/assignments?/update"
-					bind:this={info}/>
-			</CreatePopupButton> 
+					bind:this={form}
+				/>
+			</CreatePopupButton>
 			<a href="{base}/assignments/{assign.id}">check </a>
 		</assign>
 	{/each}
@@ -33,17 +35,16 @@
 	<p>Assignments not found</p>
 {/if}
 {#if data.id}
-<CreatePopupButton let:closeAction={closeAction}  on:closePopup={info.clearFields}>
-  <AssignmentCreationForm on:SubmitEvent = {closeAction}
-	functionTitle="Create assignment" 
-	UserId={data.id} 
-	classes={data.classes} 
-	action = "/assignments?/create"
-	bind:this={info}/>
-</CreatePopupButton>
+	<CreatePopupButton let:closeAction on:closePopup={form.clearFields}>
+		<AssignForm
+			on:SubmitEvent={() => closeAction()}
+			functionTitle="Create assignment"
+			UserId={data.id}
+			classes={data.classes}
+			action="/assignments?/create"
+			bind:this={form}
+		/>
+	</CreatePopupButton>
 {/if}
-
-
-
 
 <pre />
