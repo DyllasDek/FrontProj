@@ -2,6 +2,7 @@
 	import type { Classes } from '@prisma/client';
 
 	import Textform from '$lib/textform.svelte';
+	import '$lib/class_styles.css';
 
 	export let functionTitle: string;
 	export let UserId: string;
@@ -111,45 +112,5 @@
 		/>
 	</div>
 
-	<button type="submit">{functionTitle}</button>
+	<center><button type="submit">{functionTitle}</button></center>
 </form>
-
-<style>
-	.row_direction {
-		margin: 1em 3em 0 1em;
-		display: flex;
-		flex-direction: row;
-	}
-	.column_direction {
-		margin: 1em 3em 0 1em;
-		display: flex;
-		flex-direction: column;
-	}
-	.horizontally_margin {
-		margin: 0 0 0.2em 1em;
-	}
-	.vertically_margin {
-		margin: 0.5em 0 0 0;
-	}
-	select {
-		font-size: 16px;
-		padding: 8px;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-		transition: all 0.3s ease-in-out;
-	}
-
-	select:hover {
-		outline: none;
-		border-color: #878788;
-		transition: all 0.3s ease-in-out;
-	}
-
-	select:focus {
-		outline: none;
-		border: none;
-		background-color: rgb(243, 243, 243);
-		border-bottom: 2px solid #31427d;
-		transition: all 0.15s ease-in-out;
-	}
-</style>

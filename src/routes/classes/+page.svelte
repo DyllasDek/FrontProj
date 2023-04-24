@@ -8,34 +8,36 @@
 	let form: ClassForm;
 </script>
 
-<h2>Classes</h2>
+<center><h2>Classes</h2></center>
 {#if data.classes}
 	{#each data.classes as cl}
 		<cl>
-			<h3>{cl.courseid}</h3>
-			<p>{cl.coursedesc}</p>
-			<p>{cl.schedule}</p>
-			<p>{cl.category}</p>
-			<p>{cl.period}</p>
-			<p>{cl.from} - {cl.to}</p>
-			<a href="{base}/classes/{cl.id}">check </a>
-			<CreatePopupButton let:closeAction on:closePopup={form.ClearFields}>
-				<ClassForm
-					functionTitle="Update class"
-					UserId={data.id}
-					{cl}
-					on:SubmitEvent={() => closeAction()}
-					action="/classes?/update"
-					bind:this={form}
-				/>
-			</CreatePopupButton>
+			<div class="class-div">
+				<h3>{cl.courseid}</h3>
+				<p>{cl.coursedesc}</p>
+				<p>{cl.schedule}</p>
+				<p>{cl.category}</p>
+				<p>{cl.period}</p>
+				<p>{cl.from} - {cl.to}</p>
+				<a href="{base}/classes/{cl.id}">check </a>
+				<CreatePopupButton let:closeAction on:closePopup={form.ClearFields} text="Edit class">
+					<ClassForm
+						functionTitle="Update class"
+						UserId={data.id}
+						{cl}
+						on:SubmitEvent={() => closeAction()}
+						action="/classes?/update"
+						bind:this={form}
+					/>
+				</CreatePopupButton>
+			</div>
 		</cl>
 	{/each}
 {:else}
 	<p>Classes not found</p>
 {/if}
 {#if data.id}
-	<CreatePopupButton let:closeAction on:closePopup={form.ClearFields}>
+	<CreatePopupButton style="bottom_button" let:closeAction on:closePopup={form.ClearFields}>
 		<ClassForm
 			functionTitle="Create class"
 			on:SubmitEvent={() => closeAction()}
@@ -46,3 +48,15 @@
 	</CreatePopupButton>
 {/if}
 <pre />
+
+<style>
+	.class-div {
+		padding-left: 10px;
+		box-shadow: 0 4px 6px -5px gray;
+	}
+	h2 {
+		text-align: center;
+		margin-top: 1em;
+		font-size: 32px;
+	}
+</style>

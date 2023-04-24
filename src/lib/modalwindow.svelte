@@ -1,42 +1,40 @@
-
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 
-    const dispatch = createEventDispatcher();
+	const dispatch = createEventDispatcher();
 
-    export let isOpenModal: boolean;
+	export let isOpenModal: boolean;
 
-    function closeModal() {
-        isOpenModal = false;
-        dispatch('closeModal', { isOpenModal });
-    }
-    
+	function closeModal() {
+		isOpenModal = false;
+		dispatch('closeModal', { isOpenModal });
+	}
 </script>
 
-
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id="background" style="display: {isOpenModal ? 'block' : 'none'};" on:click={closeModal}></div>
-<div id="modal"  style="display: {isOpenModal ? 'block' : 'none'};">
-    <slot></slot>
+<div id="background" style="display: {isOpenModal ? 'block' : 'none'};" on:click={closeModal} />
+<div id="modal" style="display: {isOpenModal ? 'block' : 'none'};">
+	<slot />
 </div>
 
 <style>
-    #background {
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-    }
+	#background {
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+	}
 
-    #modal {
-        position: fixed;
-        z-index: 2;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #fff;
-        filter: drop-shadow(0 0 20px #333);
-    }
+	#modal {
+		position: fixed;
+		z-index: 2;
+		top: 50%;
+		left: 50%;
+		width: 50%;
+		transform: translate(-50%, -50%);
+		background: #fff;
+		filter: drop-shadow(0 0 20px #333);
+	}
 </style>

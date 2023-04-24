@@ -5,7 +5,8 @@
 	const dispatch = createEventDispatcher();
 
 	export let isOpenModal = false;
-
+	export let text = '+';
+	export let style = 'inline_button';
 	function openModal() {
 		isOpenModal = true;
 	}
@@ -16,13 +17,25 @@
 	}
 </script>
 
-<button on:click={openModal}>+</button>
+<button class={style} on:click={openModal}>{text}</button>
 <Modalwindow {isOpenModal} on:closeModal={closeModal}>
 	<slot closeAction={closeModal} />
 </Modalwindow>
 
 <style>
-	button {
+	button.bottom_button {
+		position: absolute;
+		bottom: 1em;
+		right: 1em;
+		padding: 1em;
+		background-color: #7f8994;
+		color: white;
+		padding: 5px 8px 5px 8px;
+		scale: 1.2;
+		font-size: 20px;
+		border-radius: 20%;
+	}
+	button.inline_button {
 		background-color: #7f8994;
 		border: none;
 		color: white;
@@ -32,7 +45,7 @@
 		display: inline-block;
 		font-size: 20px;
 		margin: 4px 2px;
-		border-radius: 20%;
+		border-radius: 4%;
 	}
 	button:hover {
 		background-color: #31427d;

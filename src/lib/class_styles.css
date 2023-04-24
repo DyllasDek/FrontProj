@@ -1,0 +1,55 @@
+button {
+	background-color: #31427d;
+	color: white;
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+	border: none;
+	box-shadow: 0 0.1em 0.4em rgba(0, 0, 0, 0.25);
+	font-size: 1em;
+	margin: 1em 0 1em 0;
+}
+button:hover {
+	transform: translateY(-0.15em);
+	transition: all 0.15s ease-in-out;
+}
+button:active {
+	scale: 0.95;
+	transition: all 0.15s ease-in-out;
+}
+.row_direction {
+	margin: 1em 3em 0 1em;
+	display: flex;
+	flex-direction: row;
+}
+.column_direction {
+	margin: 1em 3em 0 1em;
+	display: flex;
+	flex-direction: column;
+}
+.horizontally_margin {
+	margin: 0 0 0.2em 1em;
+}
+.vertically_margin {
+	margin: 0.5em 0 0 0;
+}
+select {
+	font-size: 16px;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	transition: all 0.3s ease-in-out;
+}
+
+select:hover {
+	outline: none;
+	border-color: #878788;
+	transition: all 0.3s ease-in-out;
+}
+
+select:focus {
+	outline: none;
+	border: none;
+	background-color: rgb(243, 243, 243);
+	border-bottom: 2px solid #31427d;
+	transition: all 0.15s ease-in-out;
+}
