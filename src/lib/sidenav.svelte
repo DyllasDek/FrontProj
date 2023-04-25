@@ -42,11 +42,16 @@
 	/* Header */
 	button {
 		background-color: #4c4c49;
-		border-radius: 10px;
 		color: white;
 		text-align: center;
 		text-decoration: none;
 		display: inline-block;
+		padding: 0.5em 1em;
+		border-radius: 0.5em;
+		border: none;
+		box-shadow: 0 0.1em 0.4em rgba(0, 0, 0, 0.25);
+		font-size: 1em;
+		margin: 1em 0 1em 0;
 	}
 
 	button:hover {

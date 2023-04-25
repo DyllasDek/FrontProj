@@ -12,44 +12,46 @@
 {#if data._info}
 	<center>
 		<div class="full-div">
-			<div>
-				<center>
-					<h3>{data._info.assignment}</h3>
+			<center>
+				<h3>{data._info.assignment}</h3>
 
-					<div class="hor-div">
-						<Fa icon={faInfo} style="margin: 1em;" />
+				<div class="hor-div">
+					<Fa icon={faInfo} style="margin: 1em;" />
 
-						<p>{data._info.details}</p>
-					</div>
+					<p>{data._info.details}</p>
+				</div>
 
-					<div class="hor-div">
-						<Fa icon={faClock} style="margin: 1em;" />
+				<div class="hor-div">
+					<Fa icon={faClock} style="margin: 1em;" />
 
-						<p>Due: {data._info.due}</p>
-					</div>
-					<div class="hor-div">
-						<Fa icon={faBell} style="margin: 1em;" />
-						<p>Progress: {data._info.progress}%</p>
-					</div>
-					<div class="hor-div">
-						<Fa icon={faExclamation} style="margin: 1em;" />
-						<p>
-							{#if data._info.completed}
-								Done{:else}
-								Not done
-							{/if}
-						</p>
-					</div></center
-				>
-			</div>
-		</div></center
-	>
+					<p>Due: {data._info.due}</p>
+				</div>
+				<div class="hor-div">
+					<Fa icon={faBell} style="margin: 1em;" />
+					<p>Progress: {data._info.progress}%</p>
+				</div>
+				<div class="hor-div">
+					<Fa icon={faExclamation} style="margin: 1em;" />
+					<p>
+						{#if data._info.completed}
+							Done{:else}
+							Not done
+						{/if}
+					</p>
+				</div>
+			</center>
+		</div>
+	</center>
 {:else}
 	<p>Assignment not found</p>
 {/if}
 <pre />
 
 <style>
+	.full-div {
+		align-items: center;
+		justify-content: center;
+	}
 	.hor-div {
 		align-items: center;
 		justify-content: center;
