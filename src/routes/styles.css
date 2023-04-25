@@ -39,11 +39,6 @@ h2 {
 	margin-top: 0;
 }
 
-/* List items */
-li {
-	margin-bottom: 10px;
-}
-
 li h3 {
 	color: #333;
 	margin: 0;
@@ -52,11 +47,6 @@ li h3 {
 li p {
 	color: #666;
 	margin: 5px 0;
-}
-
-/* Form */
-form {
-	margin-top: 20px;
 }
 
 label,

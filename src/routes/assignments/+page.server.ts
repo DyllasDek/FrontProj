@@ -4,25 +4,26 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ cookies }) => {
 	const id: string | undefined = cookies.get('session');
-
-	if (!id) {
+	try {
+		if (!id) {
+			throw new Error();
+		}
+		const resp = await db.user.findUniqueOrThrow({
+			where: { userAuthToken: id },
+			include: { Assignments: true, Classes: true }
+		});
+		return {
+			assignments: resp.Assignments,
+			id: id,
+			classes: resp.Classes
+		};
+	} catch (e) {
 		return {
 			assignments: null,
 			id: null,
 			classes: null
 		};
 	}
-
-	const resp = await db.user.findUniqueOrThrow({
-		where: { userAuthToken: id },
-		include: { Assignments: true, Classes: true }
-	});
-
-	return {
-		assignments: resp.Assignments,
-		id: id,
-		classes: resp.Classes
-	};
 };
 
 export const actions: Actions = {
@@ -60,6 +61,33 @@ export const actions: Actions = {
 				due: new Date(due),
 				completed: completed === 'true'
 			}
+		});
+
+		return { status: 200 };
+	},
+
+	delete: async ({ cookies, request }) => {
+		const id: string | undefined = cookies.get('session');
+		console.log(1);
+		if (!id) {
+			return {
+				status: 401,
+				body: { error: 'Unauthorized' }
+			};
+		}
+
+		const body = await request.formData();
+		const uid = body.get('id') as string;
+
+		if (!uid) {
+			return {
+				status: 400,
+				body: { error: 'Missing required fields' }
+			};
+		}
+
+		await db.assignments.delete({
+			where: { id: uid }
 		});
 
 		return { status: 200 };

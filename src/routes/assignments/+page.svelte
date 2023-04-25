@@ -29,7 +29,11 @@
 				/>
 			</CreatePopupButton>
 			<a href="{base}/assignments/{assign.id}">check </a>
-		</assign>
+			<form action="/assignments?/delete" method="POST">
+				<input type="hidden" name="id" value={assign.id} />
+				<button type="submit" class="delete">Delete</button>
+			</form></assign
+		>
 	{/each}
 {:else}
 	<p>Assignments not found</p>
@@ -48,3 +52,27 @@
 {/if}
 
 <pre />
+
+<style>
+	button.delete {
+		background-color: #7f8994;
+		border: none;
+		color: white;
+		padding: 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 20px;
+		margin: 4px 2px;
+		border-radius: 4%;
+	}
+	button:hover {
+		background-color: #31427d;
+		transition: all 0.06s ease-in;
+	}
+	button:active {
+		background-color: #31427d;
+		transition: all 0.06s ease-in;
+		transform: scale(0.9);
+	}
+</style>
