@@ -8,10 +8,10 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-        adapter: adapter({
-            // see the 'Deployment configuration' section below
-        })
-    }
+		adapter: adapter({
+			// see the 'Deployment configuration' section below
+		})
+	}
 };
 
 export default config;

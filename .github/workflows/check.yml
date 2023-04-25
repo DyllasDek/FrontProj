@@ -29,13 +29,13 @@ jobs:
             nodeModules-
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install --frozen-lockfile
 
       - name: Run ESLint
-        run: yarn lint
+        run: npx lint
 
       - name: Run stylelint
-        run: yarn stylelint
+        run: npx stylelint
   deploy:
     runs-on: ubuntu-latest
     needs: lint
