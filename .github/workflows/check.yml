@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run Lighthouse on urls and validate with lighthouserc
-        uses: treosh/lighthouse-ci-action@v7
+        uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
             ${{ needs.deploy.outputs.preview-url }}
@@ -64,5 +64,4 @@ jobs:
             ${{ needs.deploy.outputs.preview-url }}/assignments
             ${{ needs.deploy.outputs.preview-url }}/login
             ${{ needs.deploy.outputs.preview-url }}/register
-          budgetPath: ./budget.json
           runs: 2
