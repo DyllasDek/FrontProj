@@ -17,14 +17,14 @@ declare global {
 			COUNTER: DurableObjectNamespace;
 		};
 		context: {
-			waitUntil(promise: Promise<any>): void;
+			waitUntil(promise: Promise<unknown>): void;
 		};
 		caches: CacheStorage & { default: Cache };
 	}
 
-	interface Session {}
+	//interface Session {}
 
-	interface Stuff {}
+	//interface Stuff {}
 }
 
 export {};
