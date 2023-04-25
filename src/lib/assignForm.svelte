@@ -17,7 +17,7 @@
 		details: '',
 		courseid: '',
 		due: new Date(),
-		progress: 25,
+		progress: '25',
 		completed: false
 	};
 

@@ -1,0 +1,26 @@
+.full-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-left: 10px;
+	box-shadow: 0 4px 6px -5px gray;
+}
+footer {
+	display: flex;
+	justify-content: flex-end;
+}
+.hor-div {
+	display: flex;
+	flex-direction: row;
+	margin: 1em;
+}
+.button-div {
+	margin-right: 1em;
+	display: flex;
+	flex-direction: column;
+}
+h2 {
+	text-align: center;
+	margin-top: 1em;
+	font-size: 32px;
+}
