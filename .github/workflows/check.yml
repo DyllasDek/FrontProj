@@ -60,6 +60,9 @@ jobs:
         with:
           urls: |
             ${{ needs.deploy.outputs.preview-url }}
-            ${{ needs.deploy.outputs.preview-url }}/some-other-path
+            ${{ needs.deploy.outputs.preview-url }}/classes
+            ${{ needs.deploy.outputs.preview-url }}/assignments
+            ${{ needs.deploy.outputs.preview-url }}/login
+            ${{ needs.deploy.outputs.preview-url }}/register
           budgetPath: ./budget.json
           runs: 2
